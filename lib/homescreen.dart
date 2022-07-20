@@ -11,12 +11,17 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     // Pop-up Help Screen
-    Future.delayed(Duration(seconds: 0), () => helpScreen(context));
+    Future.delayed(Duration.zero, () => helpScreen(context));
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('Home Screen'),
       ),
       body: FutureBuilder<dynamic>(
