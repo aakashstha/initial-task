@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:initial_task/api.dart';
+import 'package:initial_task/helpscreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,6 +12,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    // Pop-up Help Screen
+    Future.delayed(Duration(seconds: 0), () => helpScreen(context));
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home Screen'),
