@@ -1,16 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:initial_task/homescreen.dart';
 
 helpScreen(BuildContext context) {
-  Future.delayed(const Duration(seconds: 5), () {
-     Navigator.of(context).pop();
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => HomeScreen(),
-    //   ),
-    // );
-  });
   showGeneralDialog(
     context: context,
     barrierDismissible: false,
@@ -25,6 +15,15 @@ helpScreen(BuildContext context) {
       );
     },
     pageBuilder: (context, animation, secondaryAnimation) {
+      Future.delayed(const Duration(seconds: 5), () {
+        Navigator.of(context).pop();
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) => HomeScreen(),
+        //   ),
+        // );
+      });
       return SafeArea(
         child: Center(
           child: Stack(

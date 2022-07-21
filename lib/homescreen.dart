@@ -24,36 +24,38 @@ class _HomeScreenState extends State<HomeScreen> {
         automaticallyImplyLeading: false,
         title: const Text('Home Screen'),
       ),
-      body: FutureBuilder<dynamic>(
-        future: fetchAllUserAds(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            List articles = snapshot.data["articles"];
-            var length = articles.length;
+      body: SafeArea(
+        child: FutureBuilder<dynamic>(
+          future: fetchAllUserAds(),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.hasData) {
+              List articles = snapshot.data["articles"];
+              var length = articles.length;
 
-            return snapshot.data.isNotEmpty
-                ? ListView.builder(
-                    itemCount: length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return getNews(articles, index, context);
-                    },
-                  )
-                : const Center(
-                    child: Text(
-                      "There is no news available",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+              return snapshot.data.isNotEmpty
+                  ? ListView.builder(
+                      itemCount: length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return getNews(articles, index, context);
+                      },
+                    )
+                  : const Center(
+                      child: Text(
+                        "There is no news available",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                  );
-          } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
+                    );
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
+        ),
       ),
     );
   }
@@ -64,7 +66,7 @@ Widget getNews(List articles, int index, BuildContext context) {
   return Row(
     children: [
       Padding(
-        padding: const EdgeInsets.only(left: 10, top: 10),
+        padding: const EdgeInsets.only(left: 20, top: 10),
         child: Container(
           width: 390,
           height: 120,

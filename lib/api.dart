@@ -9,7 +9,7 @@ Future<dynamic> fetchAllUserAds() async {
     return response.data;
   } catch (error) {
     // ignore: avoid_print
-    print("Error from getting user" + error.toString());
+    // print("Error from api" + error.toString());
     throw Exception('Failed to load post');
   }
 }
